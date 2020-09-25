@@ -1,4 +1,6 @@
 <!--index.wxml-->
-<view class="container">
-
+<view>
+  <view>
+    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+  </view>
 </view>
