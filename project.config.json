@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -54,13 +54,24 @@
     "game": {
       "list": []
     },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
     "miniprogram": {
       "current": 0,
       "list": [
         {
           "id": -1,
           "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide"
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "测试",
+          "pathName": "pages/test/test",
+          "scene": null
         }
       ]
     }
