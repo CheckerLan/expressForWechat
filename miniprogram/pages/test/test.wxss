@@ -1,1 +1,6 @@
 /* miniprogram/pages/test/test.wxss */
+input{
+  border: 1rpx solid black;
+  margin: 10rpx;
+  border-radius: 10rpx;
+}

@@ -1,2 +1,8 @@
 <!--miniprogram/pages/test/test.wxml-->
-<text>miniprogram/pages/test/test.wxml</text>
+<view>
+  <input type="text" value="{{val}}"  bindinput="talks"></input>
+  <button bindtap="but">确定</button>
+  <text>
+    {{message}}
+  </text>
+</view>
