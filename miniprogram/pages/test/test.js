@@ -17,29 +17,29 @@ Page({
    var that=this;
     console.log("你好")
     console.log(this.data.talks)
-      wx.cloud.callFunction({
-        name: 'TrackQuery',
-        data: {
-          expCode: "HHTT",
-          expNo: this.data.talks,
-        },
-        success:(res) => {
-          console.log("成功:",res)
+    wx.cloud.callFunction({
+      name: 'TrackQuery',
+      data: {
+        expCode: "HHTT",
+        expNo: this.data.talks,
+      },
+      success:(res) => {
+        console.log("成功:",res)
+        this.setData({
+          message:res.result.LogisticCode+"\n"+res.result.ShipperCode,
+          
+        })
+        res.result.Traces.forEach(element => {
           this.setData({
-            message:res.result.LogisticCode+"\n"+res.result.ShipperCode,
-            
+            message:this.data.message+"\n"+element.AcceptStation
           })
-          res.result.Traces.forEach(element => {
-            this.setData({
-              message:this.data.message+"\n"+element.AcceptStation
-            })
-            
-          })
-        },
-        fail:(err) => {
-          console.log("失败:",err)
-        }
-    })
+          
+        })
+      },
+      fail:(err) => {
+        console.log("失败:",err)
+      }
+  })
 
 },
 

@@ -1,0 +1,37 @@
+/* miniprogram/pages/result/result.wxss */
+text{
+  height: 40rpx;
+  margin: 0rpx;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+.infoHead{
+ 
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 30rpx;
+  margin: 10rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+}
+
+.tip{
+  margin-left: 30rpx;
+}
+/* 列表 */
+.tracesList{
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 30rpx;
+  margin: 20rpx;
+  font-size: small;
+
+  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+}
+.tracesInfo{
+  font-weight: bold;
+}
+.tracesTime{
+  font-size: smaller;
+}
+

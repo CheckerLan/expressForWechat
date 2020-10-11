@@ -1,0 +1,39 @@
+.inputval{
+  float: left;
+  margin-top: 20rpx;
+  width: 480rpx;
+  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+  
+}
+.inputval:hover{
+  box-shadow: 0rpx 0rpx 30rpx lightgray;
+}
+.search{
+  position: relative;
+  margin: 10rpx;
+  margin-top: 20rpx;
+  float: left;
+  height: 70rpx;
+  width: 150rpx;
+  
+  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+  border-radius: 35rpx;
+  background-color: #fff;
+ 
+  /* 字体有关 */
+  text-align: center;
+  color: limegreen;
+  line-height: 70rpx;
+  
+}
+.icon-search{
+  position: absolute;
+  margin-top: 5rpx;
+  left: 25rpx;
+
+}
+.icon-clean{
+  position: absolute;
+  margin-top: 5rpx;
+  left: 500rpx;
+}

@@ -1,0 +1,13 @@
+/* 屏幕宽为750rpx */
+page{
+  background-color: #F3F3F3;
+}
+input{
+  display: flex;
+  background-color: #fff;
+  height: 70rpx;
+  border-radius: 35rpx;
+  margin: 10rpx;
+  padding-left:70rpx;
+  font-size: 35rpx;
+}

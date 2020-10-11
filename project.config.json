@@ -11,7 +11,7 @@
     "newFeature": true,
     "coverView": true,
     "nodeModules": false,
-    "autoAudits": false,
+    "autoAudits": true,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
     "uglifyFileName": false,
@@ -34,32 +34,27 @@
   },
   "appid": "wxa3cbd894178f17bb",
   "projectname": "%E6%9C%89%E4%B8%AA%E5%BF%AB%E9%80%92",
-  "libVersion": "2.8.1",
+  "libVersion": "2.13.1",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
     "search": {
-      "current": -1,
       "list": []
     },
     "conversation": {
-      "current": -1,
       "list": []
     },
     "plugin": {
-      "current": -1,
       "list": []
     },
     "game": {
       "list": []
     },
     "gamePlugin": {
-      "current": -1,
       "list": []
     },
     "miniprogram": {
-      "current": 0,
       "list": [
         {
           "id": -1,
@@ -71,6 +66,14 @@
           "id": -1,
           "name": "测试",
           "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/result/result",
+          "pathName": "pages/result/result",
+          "query": "",
           "scene": null
         }
       ]

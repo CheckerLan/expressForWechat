@@ -4,21 +4,25 @@ Page({
 
    data: {
         inputShowed: false,
-        inputVal: ""
+        inputVal: "TT7700490180779",
+        inputCode: ""
     },
-    onLoad() {
+    isearch() {
+        //模拟查公司代码函数
         this.setData({
-            search: this.search.bind(this)
+            inputCode: 'HHTT'
         })
-    },
-    search: function (value) {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve([{text: '搜索结果', value: 1}, {text: '搜索结果2', value: 2}])
-            }, 200)
+        wx.navigateTo({
+          url: '/pages/result/result?expCode='+this.data.inputCode+'&expNo='+this.data.inputVal,
         })
+        console.log(this.data.inputVal)
+
+  
     },
-    selectResult: function (e) {
-        console.log('select result', e.detail)
-    },
+    inputClean(){
+        this.setData({
+            inputVal: ''
+        })
+    }
+    
 });

@@ -1,6 +1,11 @@
 <!--index.wxml-->
-<view>
-  <view>
-    <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
-  </view>
+<view class="container">
+
+  <input class="inputval" type="text" model:value="{{inputVal}}"  bindinput="changeVal" placeholder="输入快递单号" >
+    <mp-icon class="icon-search" icon="search" color="black" size="20"></mp-icon>
+    <mp-icon class="icon-clean"  icon="close" color="black" size="20" bindtap="inputClean"></mp-icon>
+  </input>
+  
+  <a class="search" href="" bindtap="isearch">搜索</a>
+  
 </view>
