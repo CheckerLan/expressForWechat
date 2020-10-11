@@ -2,6 +2,7 @@
 <view>
   <input type="text" value="{{val}}"  bindinput="talks"></input>
   <button bindtap="but">确定</button>
+  <button bindtap="testbut">查询</button>
   <text>
     {{message}}
   </text>

@@ -5,6 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
+    expCode:'',
+    expNo:'',
+    ShipperName:'',
+    condition:1,
+    //订单编号	
+    OrderCode:'',
+    //快递公司编码
+    ShipperCode:'',
+    //物流运单号
+    LogisticCode:'',
+    //物流状态
+    State:'',
+    //轨迹信息
+    Traces:'',
 
   },
 
@@ -16,17 +30,8 @@ Page({
     this.setData({
       expCode: options.expCode,
       expNo: options.expNo,
-      condition:1,
-      //订单编号	
-      OrderCode:'',
-      //快递公司编码
-      ShipperCode:'',
-      //物流运单号
-      LogisticCode:'',
-      //物流状态
-      State:'',
-      //轨迹信息
-      Traces:'',
+      ShipperName:options.ShipperName
+     
 
     })
     console.log(this.data.expCode)

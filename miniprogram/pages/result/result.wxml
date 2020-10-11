@@ -7,7 +7,7 @@
     </view>
     
    
-    <text>快递公司: {{ShipperCode}}</text>
+    <text>快递公司: {{ShipperName}}</text>
     
   </view>
   <view>
