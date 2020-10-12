@@ -1,10 +1,21 @@
+.head{
+  display: flex;
+}
 .inputval{
+  display: flex;
+  background-color: #fff;
+  height: 70rpx;
+  border-radius: 35rpx;
+  margin: 10rpx;
+  padding-left:70rpx;
+  font-size: 35rpx;
   float: left;
   margin-top: 20rpx;
   width: 480rpx;
   box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
   
 }
+
 .inputval:hover{
   box-shadow: 0rpx 0rpx 30rpx lightgray;
 }
@@ -36,4 +47,29 @@
   position: absolute;
   margin-top: 5rpx;
   left: 500rpx;
+}
+/* 历史记录列表 */
+.history{
+  background-color: #fff;
+  border-radius: 30rpx;
+  padding: 30rpx;
+  margin: 10rpx;
+  margin-top: 20rpx;
+  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+}
+/* 发布入口 */
+.toCollect{
+  height: 130rpx;
+  width: 130rpx;
+  line-height: 120rpx;
+  text-align: center;
+  position: fixed;
+  right: 10rpx;
+  bottom: 50%;
+
+  border-radius: 50%;
+  background-color: limegreen;
+  color: #fff;
+  font-weight: bolder;
+  font-size: small;
 }

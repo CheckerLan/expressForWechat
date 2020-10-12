@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/test/test",
-    "pages/result/result"
+    "pages/result/result",
+    "pages/collect/collect"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

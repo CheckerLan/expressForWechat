@@ -1,11 +1,21 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" >
+  <view class="head">
+    <input class="inputval" type="text" model:value="{{inputVal}}"  placeholder="输入快递单号" >
+      <mp-icon class="icon-search" icon="search" color="black" size="20"></mp-icon>
+      <mp-icon class="icon-clean"  icon="close" color="black" size="20" bindtap="inputClean"></mp-icon>
+    </input>
+    
+    <a class="search" bindtap="isearch">搜索</a>
+  </view>
+  
+  
+  <view class="history"  wx:for="{{history}}" data-exp-no='{{item.expNo}}' data-exp-code="{{item.expCode}}"   data-shipper-name="{{item.ShipperName}}" bindtap="listSearch">
+    <text>单号: {{item.expNo}}</text>
+    <text>
+      快递公司: {{item.ShipperName}}</text>
+    
+  </view>
 
-  <input class="inputval" type="text" model:value="{{inputVal}}"  bindinput="changeVal" placeholder="输入快递单号" >
-    <mp-icon class="icon-search" icon="search" color="black" size="20"></mp-icon>
-    <mp-icon class="icon-clean"  icon="close" color="black" size="20" bindtap="inputClean"></mp-icon>
-  </input>
-  
-  <a class="search" href="" bindtap="isearch">搜索</a>
-  
+  <a class="toCollect" bindtap="toCollect">发布代拿</a>
 </view>

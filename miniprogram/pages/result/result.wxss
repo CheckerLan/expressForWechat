@@ -15,6 +15,9 @@ text{
   box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
 }
 
+.publish{
+  margin-top: 20rpx;
+}
 .tip{
   margin-left: 30rpx;
 }

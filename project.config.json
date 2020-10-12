@@ -70,9 +70,9 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "pages/result/result",
-          "pathName": "pages/result/result",
+          "id": 2,
+          "name": "pages/collect/collect",
+          "pathName": "pages/collect/collect",
           "query": "",
           "scene": null
         }

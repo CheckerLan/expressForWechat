@@ -37,6 +37,10 @@ Page({
     console.log(this.data.expCode)
     console.log(this.data.expNo)
     //请求云函数
+    wx.showLoading({
+      title: '查询中',
+      mask:true
+  })
     wx.cloud.callFunction({
         name: 'TrackQuery',
         data: {
@@ -73,6 +77,9 @@ Page({
               condition:-1
             })
             console.log("失败:",err)
+        },
+        complete(){
+          wx.hideLoading()
         }
     })//end of callFunction
   },
@@ -90,6 +97,11 @@ Page({
   },
   toIndex(){
     wx.navigateBack()
+  },
+  toCollect(){
+    wx.navigateTo({
+      url: '/pages/collect/collect?expNo='+this.data.expNo
+    })
   },
 
   /**

@@ -1,0 +1,30 @@
+.inputview{
+  background-color: #fff;
+  margin: 10rpx;
+  padding:10rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  align-items: center;
+}
+.inputview input{
+  background-color: #fff;
+
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 550rpx;
+  overflow: hidden;
+
+  border-radius: 5rpx;
+  font-size: 35rpx;
+  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.weui-flex{
+  border: 0rpx;
+  border-bottom: 3rpx gainsboro;
+  border-style: solid;
+}
+.f-001{
+  font-size: 25rpx;
+}

@@ -3,13 +3,14 @@
   <view class="infoHead">
     <view> 
       <text class="logCode">单号: {{LogisticCode}}</text>
-      <mp-icon icon="copy" color="black" size="20" bindtap="copyCode"></mp-icon>
+      <mp-icon icon="copy" color="black" size="15" bindtap="copyCode"></mp-icon>
     </view>
-    
-   
     <text>快递公司: {{ShipperName}}</text>
-    
+    <button class="publish" type="primary" bindtap="toCollect">
+      发布为代拿
+    </button>
   </view>
+
   <view>
     <view class="tip">
       <text wx:if="{{State==0}}">
@@ -36,9 +37,7 @@
     <view class="tracesList" wx:for="{{Traces}}">
       <text class="tracesInfo">{{item.AcceptStation}}
       </text>
-      
       <text class="tracesTime">{{item.AcceptTime}}</text>
-      
     </view>
   </view>
 

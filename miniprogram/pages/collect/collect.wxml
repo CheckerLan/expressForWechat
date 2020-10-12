@@ -1,0 +1,61 @@
+<!--miniprogram/pages/collect/collect.wxml-->
+<view class="container">
+<!--pages/publish/publish.wxml-->
+  <form action="">
+    <view class="inputview">
+      
+      <view class="weui-flex">
+        <text class="margin">配送地址:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入快递帮你送到的地方，如：竹园S20-101" maxlength='25'></input>
+        </view>
+      </view>
+
+      <view class="weui-flex">
+        <text class="margin">重量(kg):</text>
+        <view class="weui-flex__item">
+          <picker class="margin" model:value="{{index}}" range="{{weightarray}}">
+            {{weightarray[index]}} kg
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-flex">
+        <text class="margin f-001">快递单号:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入快递的单号" maxlength='25' model:value="{{expNo}}"/>
+        </view>
+      </view>
+
+      <view class="weui-flex">
+        <text class="margin">备注信息:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="特殊情况备注，如：直接放门口" maxlength='40'></input>
+        </view>
+      </view>
+
+      <view class="weui-flex">
+        <text class="margin">联系方式:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入你的手机号码" type="number" maxlength='11' />
+        </view>
+        
+      </view>
+
+      <view >
+        <text class="margin">短信/取件码:</text>
+        <view class="margin">
+          <textarea placeholder="复制短信或输入取件码"  maxlength='130'></textarea>
+        </view>
+      </view>
+
+    </view>
+
+    <view>
+      <button class="margin" type="primary" formType="submit">确认信息并发布</button>
+    </view>
+
+  </form>
+
+
+</view>
