@@ -1,0 +1,26 @@
+/* miniprogram/pages/collectlist/collectlist.wxss */
+.distri{
+  border-radius: 20rpx;
+  background-color: green;
+  color: white;
+  margin: 20rpx;
+  padding: 35rpx;
+  font-weight: bold;
+  
+}
+.title{
+  margin: 0 auto;
+  font-size: 70rpx;
+  text-align: center;
+}
+.integral{
+  font-size: 70rpx;
+}
+.takenlist{
+  border-radius: 20rpx;
+  background-color: #5361df;
+  color: white;
+  margin: 20rpx;
+  padding: 35rpx;
+  font-weight: bold;
+}

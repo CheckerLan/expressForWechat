@@ -3,7 +3,12 @@
     "pages/index/index",
     "pages/test/test",
     "pages/result/result",
-    "pages/collect/collect"
+    "pages/collect/collect",
+    "pages/collectList/collectList",
+    "pages/userinfo/userinfo",
+    "pages/collectInfo/collectInfo",
+    "pages/collectTempList/collectTempList",
+    "pages/collectState/collectState"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -11,6 +16,23 @@
     "navigationBarBackgroundColor": "#F3F3F3",
     "navigationBarTitleText": "有个快递",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#5361df",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/collectList/collectList",
+        "text": "代拿"
+      },
+      {
+        "pagePath": "pages/userinfo/userinfo",
+        "text": "我的"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2",

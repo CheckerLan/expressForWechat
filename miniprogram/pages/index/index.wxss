@@ -1,5 +1,7 @@
 .head{
   display: flex;
+  background-color: #5361df;
+  padding-bottom: 15rpx;
 }
 .inputval{
   display: flex;
@@ -12,12 +14,12 @@
   float: left;
   margin-top: 20rpx;
   width: 480rpx;
-  box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
+  box-shadow: 0rpx 0rpx 30rpx inset rgba(211, 211, 211,0.2);
   
 }
 
 .inputval:hover{
-  box-shadow: 0rpx 0rpx 30rpx lightgray;
+  box-shadow: 0rpx 0rpx 30rpx inset lightgray;
 }
 .search{
   position: relative;
@@ -28,12 +30,11 @@
   width: 150rpx;
   
   box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
-  border-radius: 35rpx;
+  border-radius: 25rpx;
   background-color: #fff;
  
   /* 字体有关 */
   text-align: center;
-  color: limegreen;
   line-height: 70rpx;
   
 }
@@ -53,7 +54,7 @@
   background-color: #fff;
   border-radius: 30rpx;
   padding: 30rpx;
-  margin: 10rpx;
+  margin: 20rpx;
   margin-top: 20rpx;
   box-shadow: 0rpx 0rpx 30rpx rgba(211, 211, 211,0.2);
 }
@@ -68,7 +69,7 @@
   bottom: 50%;
 
   border-radius: 50%;
-  background-color: limegreen;
+  background-color: #5361df;
   color: #fff;
   font-weight: bolder;
   font-size: small;

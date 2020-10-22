@@ -1,4 +1,6 @@
 // miniprogram/pages/result/result.js
+const app=getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -40,7 +42,7 @@ Page({
     wx.showLoading({
       title: '查询中',
       mask:true
-  })
+    })
     wx.cloud.callFunction({
         name: 'TrackQuery',
         data: {
@@ -71,6 +73,39 @@ Page({
               Traces:res.result.Traces.reverse()
             })
             console.log("成功:",res)
+            db.collection('srecord')
+            .where({
+              uid: app.openid, // 填入当前用户 openid
+              expNo: this.data.expNo
+            })
+            .get()
+            .then(res => {
+              console.log(res.data)
+              if(res.data.length<=0){
+                console.log("数据库为空")
+                db.collection('srecord').add({
+                  // data 字段表示需新增的 JSON 数据
+                  data: {
+                    uid: app.openid, // 填入当前用户 openid
+                    expNo: this.data.expNo,
+                    expCode:this.data.expCode,
+                    expName:this.data.ShipperName
+                  }
+                })
+                .then(res => {
+                  console.log("addsuccess",res)
+                })
+                .catch(console.error)
+                //end of add
+
+              }else{
+                console.log("记录已存在")
+              }//end if
+            })
+            .catch(err => {
+              console.error(err)
+            })//end of get
+
         },
         fail:(err) => {
             this.setData({
@@ -103,6 +138,7 @@ Page({
       url: '/pages/collect/collect?expNo='+this.data.expNo
     })
   },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

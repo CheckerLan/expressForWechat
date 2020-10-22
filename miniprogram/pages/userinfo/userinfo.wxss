@@ -1,0 +1,58 @@
+/* miniprogram/pages/userinfo/userinfo.wxss */
+.getinfo{
+  margin: 50rpx;
+  background-color: white;
+}
+
+.infoview{
+  margin: 20rpx;
+  margin-top: 70rpx;
+  margin-bottom: 70rpx;
+  border-radius: 20rpx;
+  background-color: white;
+  padding: 20rpx;
+  padding-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.avaImg{
+  border-radius: 50%;
+  width: 200rpx;
+  height: 200rpx;
+  margin: 10rpx;
+}
+.nickname{
+  margin: 20rpx auto;
+  line-height: 100%;
+  text-align: center;
+  font-size: x-large;
+}
+.integral{
+  margin: 20rpx;
+  margin-bottom: 10rpx;
+  text-align: center;
+  color: gainsboro;
+}
+.integral>text{
+  font-size: xx-large;
+  font-weight: bolder;
+  /* color: #5361df; */
+}
+.tohistory{
+  border-radius: 20rpx;
+  background-color: #5361df;
+  color: white;
+  margin: 50rpx;
+  padding: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.tocurrent{
+  border-radius: 20rpx;
+  background-color: green;
+  color: white;
+  margin: 50rpx;
+  padding: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}

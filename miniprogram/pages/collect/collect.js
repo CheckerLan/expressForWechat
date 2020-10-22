@@ -1,4 +1,6 @@
 // miniprogram/pages/collect/collect.js
+const app=getApp()
+const db = wx.cloud.database()
 Page({
 
   /**
@@ -7,7 +9,16 @@ Page({
   data: {
     weightarray: [1,2,3,4,5],
     index:0,
+
+    pupointlist:'',
+    pupointindex:0,
+
     expNo:'',
+    c_address:'',
+    c_phonenubmer:'',
+    c_info:'',
+    c_code:'',
+
 
   },
 
@@ -18,6 +29,34 @@ Page({
     this.setData({
       expNo:options.expNo,
     })
+  },
+  publishcollect(){
+      wx.cloud.callFunction({
+        name: 'addCollect',
+        data: {
+          c_state:1,
+          c_pupoint:this.data.pupointlist[this.data.pupointindex].p_name,
+          c_wight:this.data.weightarray[this.data.index],
+          c_address:this.data.c_address,
+          c_phonenubmer:this.data.c_phonenubmer,
+          c_info:this.data.c_info,
+          c_code:this.data.c_code,
+
+          c_puUiid:app.openid,
+          c_tkUiid:'',
+        },
+        success:(res) => {
+          console.log("成功:",res)
+        },
+        fail:(err) => {
+          console.log("失败:",err)
+        },
+        complete(){
+            wx.hideLoading()
+        }
+    })//end of callFunction 
+    
+
   },
 
   /**
@@ -31,6 +70,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    db.collection('pupoint').where({
+      p_area:"广东财经大学"
+    })
+    .get()
+    .then(res => {
+        console.log("getsuccess",res.data)
+        // res.data.forEach(item => {
+        //   this.setData({
+        //     pupointlist:item.p_name
+        //   })
+        //   console.log(this.data.pupointlist)
+        // });
+        this.setData({
+          pupointlist: res.data,
+        })
+
+    })
+    .catch(console.error)
 
   },
 

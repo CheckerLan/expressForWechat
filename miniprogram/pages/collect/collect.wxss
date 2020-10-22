@@ -1,8 +1,7 @@
 .inputview{
   background-color: #fff;
-  margin: 10rpx;
-  padding:10rpx;
-  border-radius: 30rpx;
+  margin: 20rpx;
+  border-radius: 20rpx;
   font-size: 30rpx;
   align-items: center;
 }
@@ -20,10 +19,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.weui-flex{
-  border: 0rpx;
-  border-bottom: 3rpx gainsboro;
-  border-style: solid;
+
+.underline{
+  border-bottom: 3rpx solid gainsboro;
 }
 .f-001{
   font-size: 25rpx;

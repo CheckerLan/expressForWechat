@@ -10,12 +10,11 @@
   </view>
   
   
-  <view class="history"  wx:for="{{history}}" data-exp-no='{{item.expNo}}' data-exp-code="{{item.expCode}}"   data-shipper-name="{{item.ShipperName}}" bindtap="listSearch">
+  <view class="history"  wx:for="{{history}}" data-exp-no='{{item.expNo}}' data-exp-code="{{item.expCode}}"   data-shipper-name="{{item.expName}}" bindtap="listSearch">
     <text>单号: {{item.expNo}}</text>
     <text>
-      快递公司: {{item.ShipperName}}</text>
-    
-  </view>
+      快递公司: {{item.expName}}</text>
+    </view>
 
   <a class="toCollect" bindtap="toCollect">发布代拿</a>
 </view>

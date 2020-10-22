@@ -1,0 +1,2 @@
+/* miniprogram/pages/collectTempList/collectTempList.wxss */
+@import "../collectList/collectList.wxss"

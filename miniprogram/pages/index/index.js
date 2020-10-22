@@ -1,5 +1,6 @@
 //index.js
-
+const app=getApp()
+const db = wx.cloud.database()
 Page({
 
    data: {
@@ -39,7 +40,10 @@ Page({
                     ShipperName:res.result.Shippers[0].ShipperName
                 })
                 wx.navigateTo({
-                    url: '/pages/result/result?expCode='+this.data.inputCode+'&expNo='+this.data.inputVal+'&ShipperName='+this.data.ShipperName
+                    url: '/pages/result/result'
+                    +'?expCode='+this.data.inputCode
+                    +'&expNo='+this.data.inputVal
+                    +'&ShipperName='+this.data.ShipperName
                 })
                 console.log(this.data.inputVal)
                 console.log("成功:",res)
@@ -59,49 +63,22 @@ Page({
         })
     },
     onLoad:function(){
-        var that=this
-        wx.login({
-            success (res) {
-              if (res.code) {
-                //发起网络请求
-                wx.request({
-                  url: 'https://api.weixin.qq.com/sns/jscode2session',
-                  data: {
-                    appid:'wxa3cbd894178f17bb',
-                    secret:'6eed0162dbb6507b79ce8ce0df925782',
-                    js_code:res.code,
-                    grant_type:'authorization_code'
 
-                  },
-                  header: {
-                    'content-type': 'application/json' // 默认值
-                  },
-                  success (res) {
-                    console.log(res.data)
-                    console.log('用户登录:'+res.data.openid)
-                    that.setData({
-                        //模拟数据库返回信息
-                        history:{
-                            0:{
-                                expNo:'TT7700490180779',
-                                expCode:'HHTT',
-                                ShipperName:'天天快递'
-                            },
-                            1:{
-                                expNo:'TT7700490180779',
-                                expCode:'HHTT',
-                                ShipperName:'天天快递'
-                            }
-                            
-                        }
-                    })
-                  }
-                })
-              } else {
-                console.log('登录失败！' + res.errMsg)
-              }
-            }
-          })
+    },
+    onShow:function(){
+        db.collection('srecord')
+        .where({
+            uid: app.openid, // 填入当前用户 openid
+        })
+        .get()
+        .then(res => {
+            console.log("getsuccess",res.data)
+            this.setData({
+                history: res.data
+            })
+        })
+        .catch(console.error)
+
     },
     listSearch(event){
         console.log(event)

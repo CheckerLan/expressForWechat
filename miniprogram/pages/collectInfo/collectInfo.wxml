@@ -1,0 +1,37 @@
+<!--pages/collectInfo/collectInfo.wxml-->
+  <view class="inputview">
+    <view class="weui-flex">
+      <text class="margin">取件点:</text>
+      <view class="weui-flex__item margin">
+        <text>{{collectList.c_pupoint}}</text>
+      </view>
+    </view>    
+
+    <view class="weui-flex">
+      <text class="margin">配送地址:</text>
+      <view class="weui-flex__item margin">
+        <text>{{collectList.c_address}}</text>
+      </view>
+    </view>
+
+    <view class="weui-flex">
+      <text class="margin">重量(kg):</text>
+      <view class="weui-flex__item margin">
+        {{collectList.c_wight}}kg
+      </view>
+    </view>
+
+    <view class="weui-flex">
+      <text class="margin">备注信息:</text>
+      <view class="weui-flex__item margin">
+        <text>{{collectList.c_info}}</text>
+      </view>
+    </view>
+
+    
+
+  </view>
+  <view>
+      <button bindtap="acceptCollect">接受订单</button>
+  </view>
+

@@ -1,0 +1,35 @@
+/* miniprogram/pages/collectState/collectState.wxss */
+.hole{
+  margin: 20rpx auto;
+  height: 30rpx;
+  width: 30rpx;
+  background-color: gainsboro;
+  border-radius: 50%;
+}
+.centerview{
+  height: 600rpx;
+  width: 600rpx;
+  margin: 80rpx auto;
+  margin-top: 30rpx;
+  background-color: white;
+  box-shadow: gainsboro;
+  border-radius: 30rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.address{
+  font-size: xx-large;
+  font-weight: bolder;
+  margin: auto;
+  text-align: center;
+  line-height: 400rpx;
+}
+
+.takeit{
+  color: white;
+  background-color: #5361df;
+  height: 120rpx;
+  line-height: 120rpx;
+  width: 660rpx;
+  padding: 0;
+}

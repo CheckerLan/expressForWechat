@@ -1,0 +1,6 @@
+/* pages/collectInfo/collectInfo.wxss */
+@import "../collect/collect.wxss";
+
+.inputview{
+  margin-top: 80rpx;
+}

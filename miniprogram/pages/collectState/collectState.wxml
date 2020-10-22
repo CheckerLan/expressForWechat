@@ -1,0 +1,15 @@
+<!--miniprogram/pages/collectState/collectState.wxml-->
+<view class="container">
+  <view >
+    <view class="centerview">
+      <view class="hole"></view>
+      <text>
+        目的地：
+      </text>
+
+      
+      <view class="address">{{collectList.c_address}}</view>
+    </view>
+    <button class="takeit" bindtap="arrival">确认送达</button>
+  </view>
+</view>
