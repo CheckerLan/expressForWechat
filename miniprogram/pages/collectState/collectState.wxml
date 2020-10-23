@@ -10,6 +10,47 @@
       
       <view class="address">{{collectList.c_address}}</view>
     </view>
-    <button class="takeit" bindtap="arrival">确认送达</button>
+
+    <view wx:if="{{!belong}}">
+      <view wx:if="{{collectList.c_state==2}}">
+        <button class="takeit margin" bindtap="arrival">确认送达</button>
+        <button class="takeit margin" bindtap="forgive">放弃订单</button>
+      </view>
+
+      <view wx:if="{{collectList.c_state==3}}">
+        <view class="note">
+          已确认送达,等待对方确认
+        </view>
+
+      </view>
+      <view wx:if="{{collectList.c_state==4}}">
+        <view class="note">
+          订单完成
+        </view>
+      </view>
+
+
+    </view>
+    <view wx:if="{{belong}}">
+      <view wx:if="{{collectList.c_state==2}}">
+        <view class="note">
+          对方正在配送中
+        </view>
+
+      </view>
+
+      <view wx:if="{{collectList.c_state==3}}">
+        <button class="takeit" bindtap="got">确认收到</button>
+      </view>
+
+      <view wx:if="{{collectList.c_state==4}}">
+        <view class="note">
+          订单已完成
+        </view>
+        
+      </view>
+
+    </view>
+    
   </view>
 </view>

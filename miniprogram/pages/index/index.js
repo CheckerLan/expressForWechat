@@ -66,6 +66,10 @@ Page({
 
     },
     onShow:function(){
+        wx.showLoading({
+            title: '加载历史中',
+            mask:true
+        })
         db.collection('srecord')
         .where({
             uid: app.openid, // 填入当前用户 openid
@@ -74,8 +78,9 @@ Page({
         .then(res => {
             console.log("getsuccess",res.data)
             this.setData({
-                history: res.data
+                history: res.data.reverse()
             })
+            wx.hideLoading()
         })
         .catch(console.error)
 
@@ -94,5 +99,20 @@ Page({
             url: '/pages/collect/collect?expNo='+this.data.inputVal
         })
     },
+    deleteHistory(event){
+        var that=this
+        console.log("删除",event.currentTarget.dataset._id)
+        db.collection('srecord')
+        .doc(event.currentTarget.dataset._id)
+        .remove({
+            success: function(res) {
+              console.log(res)
+              that.onShow()
+            },
+            fail:function(err){
+                console.log(err)
+            }
+        })
+    }
     
 });

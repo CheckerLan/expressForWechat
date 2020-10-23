@@ -1,7 +1,23 @@
 <!--miniprogram/pages/collectTempList/collectTempList.wxml-->
 <view class="container">
-  <view class="takenlist" wx:for="{{collectList}}" data-index="{{index}}"  bindtap="toCollectinfo">
+  <view class="{{(item.c_state==4)?'takenlist_ok':'takenlist'}}" wx:for="{{collectList}}" data-index="{{index}}"  bindtap="toCollectinfo">
     <view class="weui-flex">
+        <view class="state" wx:if="{{item.c_state==1}}" style="background-color: #5361df;color:#5361df">
+          <view class="ftext">待送</view>
+        </view>
+        <view class="state" wx:if="{{item.c_state==2}}" style="background-color: lightseagreen;color:lightseagreen">
+          <view class="ftext">配送</view>
+        </view>
+        <view class="state" wx:elif="{{item.c_state==3}}" style="background-color:green;color:green">
+          <view class="ftext">送达</view>
+        </view>
+        <view class="state" wx:elif="{{item.c_state==4}}" style="background-color: greenyellow;color:white">
+          <view class="ftext">完成</view>
+        </view>
+        
+      
+  
+      
       <view class="weui-flex__item">
         <view>取件点:{{item.c_pupoint}}</view>
         <view>目的地:{{item.c_address}}</view>

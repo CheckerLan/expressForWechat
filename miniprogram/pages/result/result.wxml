@@ -6,7 +6,7 @@
       <mp-icon icon="copy" color="black" size="15" bindtap="copyCode"></mp-icon>
     </view>
     <text>快递公司: {{ShipperName}}</text>
-    <button class="publish" type="primary" bindtap="toCollect">
+    <button class="publish" bindtap="toCollect">
       发布为代拿
     </button>
   </view>

@@ -31,6 +31,10 @@ Page({
     })
   },
   publishcollect(){
+      wx.showLoading({
+        title: '发布中',
+        mask:true
+      })
       wx.cloud.callFunction({
         name: 'addCollect',
         data: {
@@ -47,6 +51,26 @@ Page({
         },
         success:(res) => {
           console.log("成功:",res)
+
+          db.collection('collect')
+          .where({
+              _id:res.result._id, // 填入当前用户 openid
+          })
+          .get()
+          .then(res => {
+              wx.showToast({
+                title: '发布成功',
+                duration: 2000
+              })
+              console.log("getsuccess",res.data)
+              let str=JSON.stringify(res.data[0])
+              wx.redirectTo({
+                url: '/pages/collectInfo/collectInfo'
+                +'?collectList='+str
+              }) 
+          })
+          .catch(console.error)
+          
         },
         fail:(err) => {
           console.log("失败:",err)

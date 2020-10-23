@@ -31,7 +31,10 @@
     
 
   </view>
-  <view>
-      <button bindtap="acceptCollect">接受订单</button>
+  <view wx:if="{{!belong}}">
+      <button class="takeit" bindtap="acceptCollect">接受订单</button>
+  </view>
+  <view  wx:else>
+    <button class="takeit" bindtap="deleteCollect">撤销订单</button>
   </view>
 

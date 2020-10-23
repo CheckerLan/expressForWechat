@@ -14,7 +14,8 @@ exports.main = async (event, context) => {
   try {
     return await 
     db.collection('collect').where({
-      c_tkUiid:wxContext.OPENID
+      c_tkUiid:wxContext.OPENID,
+      c_is_deleted:false
     })
     .get()
     .then(res => {

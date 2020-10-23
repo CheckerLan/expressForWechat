@@ -19,45 +19,11 @@ Page({
     this.setData({
       mode:options.mode
     }) 
-    if(options.mode=='acceptCollect'){
-      wx.cloud.callFunction({
-        name: 'getTakenCollect',
-        success:(res) => {
-          console.log("成功:",res)
-          this.setData({
-            collectList:res.result.data
-          })
-        },
-        fail:(err) => {
-          console.log("失败:",err)
-        },
-        complete(){
-            wx.hideLoading()
-        }
-      })//end of callFunction 
-    }else if(options.mode=='publishCollect'){
-      wx.cloud.callFunction({
-        name: 'getPublishCollect',
-        success:(res) => {
-          console.log("成功:",res)
-          this.setData({
-            collectList:res.result.data
-          })
-        },
-        fail:(err) => {
-          console.log("失败:",err)
-        },
-        complete(){
-            wx.hideLoading()
-        }
-      })//end of callFunction 
-
-    }
   },
   toCollectinfo(event){
     let index=event.currentTarget.dataset.index
     let str=JSON.stringify(this.data.collectList[index])
-    if(this.data.mode=='acceptCollect'){
+    if(this.data.mode=='acceptCollect'||(this.data.mode=='publishCollect' && this.data.collectList[index].c_state>2)){
       
       wx.navigateTo({
         url: '/pages/collectState/collectState'
@@ -83,6 +49,44 @@ Page({
    */
   onShow: function () {
 
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
+    if(this.data.mode=='acceptCollect'){
+      wx.cloud.callFunction({
+        name: 'getTakenCollect',
+        success:(res) => {
+          console.log("成功:",res)
+          this.setData({
+            collectList:res.result.data.reverse()
+          })
+        },
+        fail:(err) => {
+          console.log("失败:",err)
+        },
+        complete(){
+            wx.hideLoading()
+        }
+      })//end of callFunction 
+    }else if(this.data.mode=='publishCollect'){
+      wx.cloud.callFunction({
+        name: 'getPublishCollect',
+        success:(res) => {
+          console.log("成功:",res)
+          this.setData({
+            collectList:res.result.data.reverse()
+          })
+        },
+        fail:(err) => {
+          console.log("失败:",err)
+        },
+        complete(){
+            wx.hideLoading()
+        }
+      })//end of callFunction 
+
+    }
   },
 
   /**

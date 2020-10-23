@@ -25,7 +25,27 @@ Page({
       +'?collectList='+str
     }) 
   },
-
+  toCollectState(){
+    wx.cloud.callFunction({
+      name: 'getCurrentCollect',
+      success:(res) => {
+        console.log("成功:",res)
+        if(res.result.data.length>0){
+          let str=JSON.stringify(res.result.data.reverse()[0])
+          wx.navigateTo({
+            url: '/pages/collectState/collectState'
+            +'?collectList='+str
+          })
+        }
+      },
+      fail:(err) => {
+        console.log("失败:",err)
+      },
+      complete(){
+          wx.hideLoading()
+      }
+    })//end of callFunction 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -37,13 +57,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that=this
+    this.setData({
+      collectList:'',
+      currentCollect:''
+    })
+    wx.showLoading({
+      title: '加载当前接受的订单中',
+      mask:true
+    })
     wx.cloud.callFunction({
       name: 'getCurrentCollect',
       success:(res) => {
         console.log("成功:",res)
-        if(res.result.data.length==1){
+        if(res.result.data.length>0){
           this.setData({
-            currentCollect:res.result.data[0]
+            currentCollect:res.result.data.reverse()[0]
           })
         }
       },
@@ -51,22 +80,29 @@ Page({
         console.log("失败:",err)
       },
       complete(){
-          wx.hideLoading()
+
+          wx.showLoading({
+            title: '加载代拿列表中',
+            mask:true
+          })
+          db.collection('collect').where({
+            c_state:1,
+            c_is_deleted:false
+          })
+          .get()
+          .then(res => {
+              console.log("getsuccess",res.data)
+              that.setData({
+                collectList:res.data.reverse()
+              })
+              wx.hideLoading()
+          })
+          .catch(console.error)
+          
       }
     })
 
-    db.collection('collect').where({
-      c_state:1
-    })
-    .get()
-    .then(res => {
-        console.log("getsuccess",res.data)
-        this.setData({
-          collectList:res.data
-        })
-
-    })
-    .catch(console.error)
+    
 
 
 

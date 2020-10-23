@@ -1,7 +1,7 @@
 /* miniprogram/pages/collectlist/collectlist.wxss */
 .distri{
   border-radius: 20rpx;
-  background-color: green;
+  background-color: lightseagreen;
   color: white;
   margin: 20rpx;
   padding: 35rpx;
@@ -19,8 +19,39 @@
 .takenlist{
   border-radius: 20rpx;
   background-color: #5361df;
+  background-color: white;
   color: white;
+  color: black;
+  box-shadow: gainsboro;
   margin: 20rpx;
   padding: 35rpx;
   font-weight: bold;
+}
+.takenlist_ok{
+  border-radius: 20rpx;
+  background-color: green;
+  color: white;
+  box-shadow: gainsboro;
+  margin: 20rpx;
+  padding: 35rpx;
+  font-weight: bold;
+}
+.state{
+  /* background-color: green; */
+  margin: 20rpx auto;
+  margin-bottom: 0;
+  border-radius: 50%;
+  height:50rpx;
+  width: 50rpx;
+}
+.weui-flex__item{
+  margin-left: 30rpx;
+}
+.ftext{
+  font-size:20rpx;
+  top: 60rpx;
+  position: relative;
+  text-align: center;
+  /* writing-mode: vertical-rl; */
+
 }

@@ -34,20 +34,31 @@ Page({
     })
   },
   toCollectState(){
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     wx.cloud.callFunction({
       name: 'getCurrentCollect',
       success:(res) => {
         console.log("成功:",res)
-        if(res.result.data.length==1){
-          let str=JSON.stringify(res.result.data[0])
+        if(res.result.data.length>0){
+          let str=JSON.stringify(res.result.data.reverse()[0])
           wx.navigateTo({
             url: '/pages/collectState/collectState'
             +'?collectList='+str
+          })
+        }else{
+          wx.showToast({
+            title: '当前暂无订单',
+            icon: 'loading',
+            duration: 1000
           })
         }
       },
       fail:(err) => {
         console.log("失败:",err)
+        
       },
       complete(){
           wx.hideLoading()
@@ -67,7 +78,10 @@ Page({
   onShow: function () {
     var that=this
     console.log(app.openid)
-    
+    wx.showLoading({
+      title: '加载中',
+      mask:true
+    })
     wx.getSetting({
       success (res){
         if (res.authSetting['scope.userInfo']) {
@@ -95,6 +109,9 @@ Page({
         this.setData({
           logined:false
         })
+      },
+      complete(){
+        wx.hideLoading()
       }
     })
 

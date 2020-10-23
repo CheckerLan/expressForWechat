@@ -33,3 +33,23 @@
   width: 660rpx;
   padding: 0;
 }
+.note{
+  text-align: center;
+  color: #5361df;
+  font-size: x-large;
+  font-weight: bold;
+}
+.state{
+  height: 400rpx;
+  width: 400rpx;
+  background-color: #5361df;
+  clip-path: polygon(
+    28% 6%,
+    71% 15%,
+    100% 75%,
+    18% 39%,
+    63% 27%,
+    16% 22%,
+    65% 19%
+  );
+}

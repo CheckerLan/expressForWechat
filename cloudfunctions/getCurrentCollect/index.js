@@ -15,7 +15,8 @@ exports.main = async (event, context) => {
     return await 
     db.collection('collect').where({
       c_tkUiid:wxContext.OPENID,
-      c_state:2
+      c_state:2,
+      c_is_deleted:false
     })
     .get()
     .then(res => {

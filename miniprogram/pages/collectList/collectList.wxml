@@ -1,6 +1,6 @@
 <!--miniprogram/pages/collectlist/collectlist.wxml-->
 <view class="container">
-  <view class="distri" wx:if="{{currentCollect}}">
+  <view class="distri" wx:if="{{currentCollect}}" bindtap="toCollectState">
     <view class="title">
       <text>正在配送</text>
     </view>
@@ -9,6 +9,7 @@
         <view>取件点:{{currentCollect.c_address}}</view>
         <view>目的地:{{currentCollect.c_pupoint}}</view>
       </view>
+
       <!-- <view>
         <text class="integral">{{0}}</text>积分
       </view> -->
@@ -18,10 +19,17 @@
 
   <view class="takenlist" bindtap="toCollectinfo"  wx:for="{{collectList}}"  data-index="{{index}}" >
     <view class="weui-flex" >
+ 
+      <view class="state" style="background-color: #5361df;color:#5361df">
+          <view class="ftext">待送</view>
+        </view>
+      
       <view class="weui-flex__item" >
         <view>取件点:{{item.c_pupoint}}</view>
         <view>目的地:{{item.c_address}}</view>
       </view>
+      
+      
       <!-- <view>
         <text class="integral">{{item.cIntegral}}</text>积分
       </view> -->

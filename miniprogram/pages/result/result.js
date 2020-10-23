@@ -72,7 +72,6 @@ Page({
               //轨迹信息
               Traces:res.result.Traces.reverse()
             })
-            console.log("成功:",res)
             db.collection('srecord')
             .where({
               uid: app.openid, // 填入当前用户 openid

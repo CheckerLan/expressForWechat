@@ -71,8 +71,8 @@
         },
         {
           "id": 2,
-          "name": "pages/userinfo/userinfo",
-          "pathName": "pages/userinfo/userinfo",
+          "name": "pages/collectList/collectList",
+          "pathName": "pages/collectList/collectList",
           "query": "",
           "scene": null
         }

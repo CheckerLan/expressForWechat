@@ -17,6 +17,12 @@ text{
 
 .publish{
   margin-top: 20rpx;
+  color: white;
+  background-color: #5361df;
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 660rpx;
+  padding: 0;
 }
 .tip{
   margin-left: 30rpx;
