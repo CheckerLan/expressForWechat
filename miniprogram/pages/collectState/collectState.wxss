@@ -21,8 +21,9 @@
   font-size: xx-large;
   font-weight: bolder;
   margin: auto;
+  margin-bottom: 0;
   text-align: center;
-  line-height: 400rpx;
+  line-height: 200rpx;
 }
 
 .takeit{

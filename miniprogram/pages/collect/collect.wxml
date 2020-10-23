@@ -62,7 +62,7 @@
     </view>
 
     <view>
-      <button class="margin" bindtap="publishcollect">确认信息并发布</button>
+      <button class="takeit margin" bindtap="publishcollect">确认信息并发布</button>
     </view>
 
   </form>

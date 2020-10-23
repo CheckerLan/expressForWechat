@@ -4,11 +4,16 @@
     <view class="centerview">
       <view class="hole"></view>
       <text>
-        目的地：
+        目的地
       </text>
-
       
       <view class="address">{{collectList.c_address}}</view>
+      
+      <view wx:if="{{!belong}}">
+        <view class="margin" wx:if="{{collectList.c_state==2}}">
+          {{collectList.c_code}}
+        </view>
+      </view>
     </view>
 
     <view wx:if="{{!belong}}">

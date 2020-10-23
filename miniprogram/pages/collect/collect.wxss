@@ -26,3 +26,11 @@
 .f-001{
   font-size: 25rpx;
 }
+.takeit{
+  color: white;
+  background-color: #5361df;
+  height: 120rpx;
+  line-height: 120rpx;
+  width: 660rpx;
+  padding: 0;
+}

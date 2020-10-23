@@ -32,7 +32,7 @@ Page({
       title: '确认送达',
       mask:true
     })
-
+    var that=this
     db.collection('collect')
     .where({
       _id:this.data.collectList._id
@@ -57,7 +57,13 @@ Page({
               title: '成功送达',
               duration: 2000
             })
-            this.onShow()
+            that.data.collectList.c_state=3
+
+            let str=JSON.stringify(that.data.collectList)
+            wx.redirectTo({
+              url: '/pages/collectState/collectState'
+              +'?collectList='+str
+            })
           },
           fail:(err) => {
             console.log("失败:",err)
@@ -120,6 +126,7 @@ Page({
       title: '确认收到',
       mask:true
     })
+    var that=this
 
     db.collection('collect')
     .where({
@@ -147,7 +154,7 @@ Page({
               duration: 2000
             })
             // wx.navigateBack()
-            this.onShow()
+            that.onShow()
           },
           fail:(err) => {
             console.log("失败:",err)
