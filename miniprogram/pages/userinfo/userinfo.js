@@ -6,9 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    nickName:'',
-    avatarUrl:'',
-    logined:false,
     integral:"-1",
   },
 
@@ -20,14 +17,7 @@ Page({
     
     
   },
-  bindGetUserInfo (e){
-    console.log(e.detail.userInfo)
-    this.setData({
-      nickName:e.detail.userInfo.nickName,
-      avatarUrl:e.detail.userInfo.avatarUrl,
-    })
-    this.onShow()
-  },
+
   toCollectTList(event){
     wx.navigateTo({
       url: '/pages/collectTempList/collectTempList?mode='+event.currentTarget.dataset.mode
@@ -76,44 +66,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that=this
-    console.log(app.openid)
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
-    wx.getSetting({
-      success (res){
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-
-          wx.getUserInfo({
-            success: function(res) {
-              console.log('userinfo:'+res.userInfo.nickName)
-              console.log(res.userInfo.avatarUrl)
-              that.setData({
-                nickName:res.userInfo.nickName,
-                avatarUrl:res.userInfo.avatarUrl,
-                logined:true
-              })
-            },
-            fail(){
-              this.setData({
-                logined:false
-              })
-            }            
-          })//end of getuserinfo
-        }
-      },
-      fail(){
-        this.setData({
-          logined:false
-        })
-      },
-      complete(){
-        wx.hideLoading()
-      }
-    })
 
   },
 

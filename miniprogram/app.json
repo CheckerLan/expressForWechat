@@ -8,7 +8,8 @@
     "pages/userinfo/userinfo",
     "pages/collectInfo/collectInfo",
     "pages/collectTempList/collectTempList",
-    "pages/collectState/collectState"
+    "pages/collectState/collectState",
+    "pages/enterInfo/enterInfo"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -20,7 +21,7 @@
   "tabBar": {
     "backgroundColor": "#F3F3F3",
     "selectedColor": "#5361df",
-    "position":"top",
+    "position": "top",
     "list": [
       {
         "pagePath": "pages/index/index",

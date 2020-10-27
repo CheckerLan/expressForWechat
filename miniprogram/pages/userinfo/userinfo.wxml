@@ -1,14 +1,15 @@
 <!--miniprogram/pages/userinfo/userinfo.wxml-->
 <view class="container">
-  <button class="getinfo" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" wx:if="{{!logined}}">
-      登录授权
-  </button>
 
-  <view class="infoview weui-flex"  wx:else>
-    <image class="avaImg" src="{{avatarUrl}}" />
+
+  <view class="infoview weui-flex" >
+    <view class="avaImg">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    
     <view class="weui-flex__item">
       <view class="nickname">
-        {{nickName}}
+        <open-data type="userNickName"></open-data>
       </view>
       <view class="integral">
         积分<text>{{integral}}</text>（未开通）

@@ -1,0 +1,39 @@
+<!--miniprogram/pages/enterInfo/enterInfo.wxml-->
+<view class="container">
+  <view class="inputview">
+    <view class="title">实名信息</view>
+
+    <view class="weui-flex">
+        <text class="margin">真实姓名:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入您在身份证上的真实姓名" maxlength='25' model:value='{{ui_idName}}' ></input>
+        </view>
+    </view>
+
+    <view class="weui-flex">
+        <text class="margin">身份证号:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入您的身份证号码" maxlength='25' model:value='{{ui_idCode}}'></input>
+        </view>
+    </view>
+
+
+
+  </view>
+
+  <view class="inputview">
+    <view class="title">联系方式</view>
+    <view class="weui-flex">
+        <text class="margin">联系方式:</text>
+        <view class="weui-flex__item">
+          <input placeholder-class="f-001" placeholder="输入您的手机号码方便对方联系您" maxlength='25' model:value='{{c_tkPhone}}'></input>
+        </view>
+    </view>
+  </view>
+  <button class="takeit margin" bindtap="back">确认个人信息</button>
+  <button class="cancel margin"bindtap="cancel">取消接单</button>
+
+
+</view>
+
+

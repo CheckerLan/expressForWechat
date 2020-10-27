@@ -53,5 +53,9 @@
   position: relative;
   text-align: center;
   /* writing-mode: vertical-rl; */
-
+}
+.center{
+  margin: 250rpx auto;
+  font-size: larger;
+  text-align: center;
 }

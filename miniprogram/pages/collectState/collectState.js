@@ -100,6 +100,7 @@ Page({
 
             c_state:1,
             c_tkUiid:'',
+            c_tkPhone:'',
             c_version:this.data.collectList.c_version
           },
           success:(res) => {
@@ -154,7 +155,13 @@ Page({
               duration: 2000
             })
             // wx.navigateBack()
-            that.onShow()
+            // that.onShow()
+            that.data.collectList.c_state=4
+            let str=JSON.stringify(that.data.collectList)
+            wx.redirectTo({
+              url: '/pages/collectState/collectState'
+              +'?collectList='+str
+            })
           },
           fail:(err) => {
             console.log("失败:",err)
@@ -165,6 +172,17 @@ Page({
         })//end of callFunction 
       }
       wx.hideLoading()
+    })
+  },
+  callme(){
+    let phonecall=''
+    if(app.globalData.openid==this.data.collectList.c_tkUiid){
+      phonecall= this.data.collectList.c_puPhone
+    }else if(app.globalData.openid==this.data.collectList.c_puUiid){
+      phonecall= this.data.collectList.c_tkPhone
+    }
+    wx.makePhoneCall({
+      phoneNumber: phonecall
     })
   },
   /**

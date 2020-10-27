@@ -1,5 +1,8 @@
 <!--miniprogram/pages/collectTempList/collectTempList.wxml-->
 <view class="container">
+  <view class="center" wx:if="{{collectList.length<=0}}">
+    暂无订单...
+  </view>
   <view class="{{(item.c_state==4)?'takenlist_ok':'takenlist'}}" wx:for="{{collectList}}" data-index="{{index}}"  bindtap="toCollectinfo">
     <view class="weui-flex">
         <view class="state" wx:if="{{item.c_state==1}}" style="background-color: #5361df;color:#5361df">

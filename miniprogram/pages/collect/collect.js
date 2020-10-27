@@ -42,12 +42,13 @@ Page({
           c_pupoint:this.data.pupointlist[this.data.pupointindex].p_name,
           c_wight:this.data.weightarray[this.data.index],
           c_address:this.data.c_address,
-          c_phonenubmer:this.data.c_phonenubmer,
+          c_puPhone:this.data.c_phonenubmer,
           c_info:this.data.c_info,
           c_code:this.data.c_code,
 
           c_puUiid:app.openid,
           c_tkUiid:'',
+          c_tkPhone:''
         },
         success:(res) => {
           console.log("成功:",res)

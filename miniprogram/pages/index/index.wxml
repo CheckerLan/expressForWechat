@@ -8,7 +8,9 @@
     
     <a class="search" bindtap="isearch">搜索</a>
   </view>
-  
+  <view class="center" wx:if="{{history.length<=0}}">
+    暂无记录...
+  </view>
   
   <view class="history weui-flex"  wx:for="{{history}}"  data-exp-no='{{item.expNo}}' data-exp-code="{{item.expCode}}"   data-shipper-name="{{item.expName}}" bindtap="listSearch">
     <view class="weui-flex__item">

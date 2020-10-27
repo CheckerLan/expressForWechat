@@ -1,5 +1,8 @@
 <!--miniprogram/pages/collectlist/collectlist.wxml-->
 <view class="container">
+  <view class="center" wx:if="{{collectList.length<=0&&currentCollect.length<=0}}">
+    暂无订单...
+  </view>
   <view class="distri" wx:if="{{currentCollect}}" bindtap="toCollectState">
     <view class="title">
       <text>正在配送</text>

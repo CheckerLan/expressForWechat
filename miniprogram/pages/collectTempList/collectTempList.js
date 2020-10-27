@@ -74,6 +74,7 @@ Page({
         name: 'getPublishCollect',
         success:(res) => {
           console.log("成功:",res)
+          console.log('长度',this.data.collectList.length)
           this.setData({
             collectList:res.result.data.reverse()
           })
@@ -87,6 +88,7 @@ Page({
       })//end of callFunction 
 
     }
+    
   },
 
   /**

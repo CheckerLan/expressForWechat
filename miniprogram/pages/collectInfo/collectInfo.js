@@ -28,17 +28,17 @@ Page({
     }
 
   },
-  acceptCollect(){
+  acceptCollect(e){
     var that=this
     console.log(this.data.collectList.c_puUiid,app.globalData.openid)
-    // if(this.data.collectList.c_puUiid==app.globalData.openid){
-    //   wx.showToast({
-    //     title: '无法接受自己的订单',
-    //     icon:'none',
-    //     duration:2000
-    //   })
-    //   return
-    // }
+    if(this.data.collectList.c_puUiid==app.globalData.openid){
+      wx.showToast({
+        title: '无法接受自己的订单',
+        icon:'none',
+        duration:2000
+      })
+      return
+    }
     wx.showLoading({
       title: '加载中',
       mask:true
@@ -57,43 +57,68 @@ Page({
         && this.data.collectList.c_version!=null
         ){
         console.log("记录存在且仅仅有一条",res.data)
-        wx.cloud.callFunction({
-          name: 'updateCollect',
-          data: {
-            _id:this.data.collectList._id,
-            c_state:2,
-            c_version:this.data.collectList.c_version
-          },
-          success:(res) => {
-            console.log("成功:",res)
-            wx.showToast({
-              title: '接受订单成功',
-              duration: 2000
-            })
-            db.collection('collect')
-            .where({
-                _id:that.data.collectList._id, // 填入当前用户 openid
-            })
-            .get()
-            .then(res => {
-                console.log("getsuccess",res.data)
-                let str=JSON.stringify(res.data[0])
-                wx.redirectTo({
-                  url: '/pages/collectState/collectState'
-                  +'?collectList='+str
-                }) 
-            })
-            .catch(console.error)
-          },
-          fail:(err) => {
-            console.log("失败:",err)
-          },
-          complete(){
+
+        wx.navigateTo({
+          url: '/pages/enterInfo/enterInfo',
+          events:{
+            tkInfo: function(data) {
+              console.log(data)
+              if(data.c_tkPhone&&data.ui_idName&&data.ui_idCode){
+                wx.cloud.callFunction({
+                  name: 'updateCollect',
+                  data: {
+                    _id:that.data.collectList._id,
+                    c_state:2,
+                    c_version:that.data.collectList.c_version,
+                    c_tkPhone:data.c_tkPhone,
+                  },
+                  success:(res) => {
+                    console.log("成功:",res)
+                    wx.showToast({
+                      title: '接受订单成功',
+                      duration: 2000
+                    })
+                    db.collection('collect')
+                    .where({
+                        _id:that.data.collectList._id, // 填入当前用户 openid
+                    })
+                    .get()
+                    .then(res => {
+                        console.log("getsuccess",res.data)
+                        let str=JSON.stringify(res.data[0])
+                        wx.redirectTo({
+                          url: '/pages/collectState/collectState'
+                          +'?collectList='+str
+                        }) 
+                    })
+                    .catch(console.error)
+                  },
+                  fail:(err) => {
+                    console.log("失败:",err)
+                  },
+                  complete(){
+                    wx.hideLoading()
+                  }
+                })//end of callFunction 
+              }else{
+                wx.showToast({
+                  title: '信息不全,无法接单',
+                  icon: 'loading',
+                  duration: 1000
+                })
+                wx.hideLoading()
+              }
               
+            }
+            //end of tkInfo
+            
           }
-        })//end of callFunction 
+          //end of events
+        })
+        //end of navigatoTo
+        console.log("done")
+
       }
-      wx.hideLoading()
     })
 
 
@@ -101,14 +126,6 @@ Page({
   deleteCollect(){
     var that=this
     console.log(this.data.collectList.c_puUiid,app.globalData.openid)
-    // if(this.data.collectList.c_puUiid==app.globalData.openid){
-    //   wx.showToast({
-    //     title: '无法接受自己的订单',
-    //     icon:'none',
-    //     duration:2000
-    //   })
-    //   return
-    // }
     wx.showLoading({
       title: '删除订单中',
       mask:true
@@ -123,15 +140,15 @@ Page({
       console.log(res)
       
       if(res.data.length==1 
-        && res.data[0].c_version==this.data.collectList.c_version 
-        && this.data.collectList.c_version!=null
+        && res.data[0].c_version==that.data.collectList.c_version 
+        && that.data.collectList.c_version!=null
         ){
         console.log("记录存在且仅仅有一条",res.data)
         wx.cloud.callFunction({
           name: 'deleteCollect',
           data: {
-            _id:this.data.collectList._id,
-            c_version:this.data.collectList.c_version
+            _id:that.data.collectList._id,
+            c_version:that.data.collectList.c_version
           },
           success:(res) => {
             console.log("成功:",res)

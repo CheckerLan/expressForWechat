@@ -77,3 +77,8 @@
   font-weight: bolder;
   font-size: small;
 }
+.center{
+  margin: 250rpx auto;
+  font-size: larger;
+  text-align: center;
+}

@@ -1,0 +1,9 @@
+/* miniprogram/pages/enterInfo/enterInfo.wxss */
+@import '../collect/collect.wxss';
+
+.title{
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  padding: 40rpx;
+}
