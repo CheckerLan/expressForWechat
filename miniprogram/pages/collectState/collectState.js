@@ -1,6 +1,7 @@
 // miniprogram/pages/collectState/collectState.js
 const app=getApp()
 const db = wx.cloud.database()
+const pageName='collectState.js'
 Page({
 
   /**
@@ -19,7 +20,7 @@ Page({
     this.setData({
       collectList:object,
     })
-    console.log(this.data.collectList)
+    console.log(pageName,'collectlist::',this.data.collectList)
     if(this.data.collectList.c_puUiid==app.globalData.openid){
       this.setData({
         belong: true
@@ -37,44 +38,47 @@ Page({
     .where({
       _id:this.data.collectList._id
     })
-    .get()
-    .then(res=>{
-      console.log(res)
-      console.log(res.data.length,res.data[0].c_version,this.data.collectList.c_version,this.data.collectList.c_version!=null)
-      
-      if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
-        console.log("记录存在且仅仅有一条",res.data)
-        wx.cloud.callFunction({
-          name: 'updateCollect',
-          data: {
-            _id:this.data.collectList._id,
-            c_state:3,
-            c_version:this.data.collectList.c_version
-          },
-          success:(res) => {
-            console.log("成功:",res)
-            wx.showToast({
-              title: '成功送达',
-              duration: 2000
-            })
-            that.data.collectList.c_state=3
+    .get({
+      success:(res)=>{
+        console.log(pageName,'get collect成功',res)
+        
+        if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
+          console.log(pageName,"记录存在且仅仅有一条",res.data)
+          wx.cloud.callFunction({
+            name: 'updateCollect',
+            data: {
+              _id:this.data.collectList._id,
+              c_state:3,
+              c_version:this.data.collectList.c_version
+            },
+            success:(res) => {
+              console.log(pageName,"update Collect成功:",res)
+              wx.showToast({
+                title: '成功送达',
+                duration: 2000
+              })
+              that.data.collectList.c_state=3
 
-            let str=JSON.stringify(that.data.collectList)
-            wx.redirectTo({
-              url: '/pages/collectState/collectState'
-              +'?collectList='+str
-            })
-          },
-          fail:(err) => {
-            console.log("失败:",err)
-          },
-          complete(){
+              let str=JSON.stringify(that.data.collectList)
+              wx.redirectTo({
+                url: '/pages/collectState/collectState'
+                +'?collectList='+str
+              })
+            },
+            fail:(err) => {
+              console.log(pageName,"update Collect失败:",res)
+            }
+          })
+          //end of callFunction 
+        }
+        //end of if
 
-          }
-        })//end of callFunction 
+        wx.hideLoading()
       }
-      wx.hideLoading()
+      //end of success
     })
+    //end of get in collect
+
   },
   forgive(){
     wx.showLoading({
@@ -86,41 +90,42 @@ Page({
     .where({
       _id:this.data.collectList._id
     })
-    .get()
-    .then(res=>{
-      console.log(res)
-      console.log(res.data.length,res.data[0].c_version,this.data.collectList.c_version,this.data.collectList.c_version!=null)
-      
-      if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
-        console.log("记录存在且仅仅有一条",res.data)
-        wx.cloud.callFunction({
-          name: 'updateCollect',
-          data: {
-            _id:this.data.collectList._id,
+    .get({
+      success:(res)=>{
+        console.log(pageName,'get collect成功',res)
+        
+        if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
+          console.log(pageName,"记录存在且仅仅有一条",res.data)
+          wx.cloud.callFunction({
+            name: 'updateCollect',
+            data: {
+              _id:this.data.collectList._id,
 
-            c_state:1,
-            c_tkUiid:'',
-            c_tkPhone:'',
-            c_version:this.data.collectList.c_version
-          },
-          success:(res) => {
-            console.log("放弃成功:",res)
-            wx.showToast({
-              title: '放弃成功',
-              duration: 2000
-            })
-            wx.navigateBack()
-          },
-          fail:(err) => {
-            console.log("失败:",err)
-          },
-          complete(){
-
-          }
-        })//end of callFunction 
+              c_state:1,
+              c_tkUiid:'',
+              c_tkPhone:'',
+              c_version:this.data.collectList.c_version
+            },
+            success:(res) => {
+              console.log(pageName,"放弃订单(update)成功:",res)
+              wx.showToast({
+                title: '放弃成功',
+                duration: 2000
+              })
+              wx.navigateBack()
+            },
+            fail:(err) => {
+              console.log("失败:",err)
+            }
+          })
+          //end of callFunction 
+        }
+        wx.hideLoading()
       }
-      wx.hideLoading()
+      //end of success
     })
+    //end of get in collect
+    
   },
   got(){
     wx.showLoading({
@@ -133,45 +138,43 @@ Page({
     .where({
       _id:this.data.collectList._id
     })
-    .get()
-    .then(res=>{
-      console.log(res)
-      console.log(res.data.length,res.data[0].c_version,this.data.collectList.c_version,this.data.collectList.c_version!=null)
-      
-      if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
-        console.log("记录存在且仅仅有一条",res.data)
-        wx.cloud.callFunction({
-          name: 'updateCollect',
-          data: {
-            _id:this.data.collectList._id,
+    .get({
+      success:(res)=>{
+        console.log(pageName,'get Collect成功',res)
+        
+        if(res.data.length==1 && res.data[0].c_version==this.data.collectList.c_version && this.data.collectList.c_version!=null){
+          console.log(pageName,"记录存在且仅仅有一条",res.data)
+          wx.cloud.callFunction({
+            name: 'updateCollect',
+            data: {
+              _id:this.data.collectList._id,
 
-            c_state:4,
-            c_version:this.data.collectList.c_version
-          },
-          success:(res) => {
-            console.log("确认成功:",res)
-            wx.showToast({
-              title: '确认成功',
-              duration: 2000
-            })
-            // wx.navigateBack()
-            // that.onShow()
-            that.data.collectList.c_state=4
-            let str=JSON.stringify(that.data.collectList)
-            wx.redirectTo({
-              url: '/pages/collectState/collectState'
-              +'?collectList='+str
-            })
-          },
-          fail:(err) => {
-            console.log("失败:",err)
-          },
-          complete(){
-
-          }
-        })//end of callFunction 
+              c_state:4,
+              c_version:this.data.collectList.c_version
+            },
+            success:(res) => {
+              console.log(pageName,"确认收到(update)成功:",res)
+              wx.showToast({
+                title: '确认成功',
+                duration: 2000
+              })
+              // wx.navigateBack()
+              // that.onShow()
+              that.data.collectList.c_state=4
+              let str=JSON.stringify(that.data.collectList)
+              wx.redirectTo({
+                url: '/pages/collectState/collectState'
+                +'?collectList='+str
+              })
+            },
+            fail:(err) => {
+              console.log(pageName,"确认收到(update)失败:",err)
+            }
+          })//end of callFunction 
+        }
+        wx.hideLoading()
       }
-      wx.hideLoading()
+      //end of success
     })
   },
   callme(){

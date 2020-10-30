@@ -7,3 +7,9 @@ page{
 .margin{
   margin: 20rpx;
 }
+
+.center{
+  margin: 250rpx auto;
+  font-size: larger;
+  text-align: center;
+}

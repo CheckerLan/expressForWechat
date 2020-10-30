@@ -1,5 +1,6 @@
 // miniprogram/pages/userinfo/userinfo.js
 const app=getApp()
+const pageName='userinfo.js'
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getCurrentCollect',
       success:(res) => {
-        console.log("成功:",res)
+        console.log(pageName,"get CurrentCollect成功:",res)
         if(res.result.data.length>0){
           let str=JSON.stringify(res.result.data.reverse()[0])
           wx.navigateTo({
@@ -47,7 +48,7 @@ Page({
         }
       },
       fail:(err) => {
-        console.log("失败:",err)
+        console.log(pageName,"get CurrentCollect失败:",err)
         
       },
       complete(){

@@ -1,6 +1,7 @@
 // miniprogram/pages/collectTempList/collectTempList.js
 const app=getApp()
 const db = wx.cloud.database()
+const pageName='collectTempList.js'
 Page({
 
   /**
@@ -9,7 +10,6 @@ Page({
   data: {
     collectList:'',
     mode:'',
-
   },
 
   /**
@@ -29,11 +29,14 @@ Page({
         url: '/pages/collectState/collectState'
         +'?collectList='+str
       })
+    
     }else if(this.data.mode=='publishCollect'){
+
       wx.navigateTo({
         url: '/pages/collectInfo/collectInfo'
         +'?collectList='+str
-      }) 
+      })
+       
     }
 
   },
@@ -57,7 +60,7 @@ Page({
       wx.cloud.callFunction({
         name: 'getTakenCollect',
         success:(res) => {
-          console.log("成功:",res)
+          console.log(pageName,"get takenCollect成功:",res)
           this.setData({
             collectList:res.result.data.reverse()
           })
@@ -73,14 +76,13 @@ Page({
       wx.cloud.callFunction({
         name: 'getPublishCollect',
         success:(res) => {
-          console.log("成功:",res)
-          console.log('长度',this.data.collectList.length)
+          console.log(pageName,"get publishCollect成功:",res)
           this.setData({
             collectList:res.result.data.reverse()
           })
         },
         fail:(err) => {
-          console.log("失败:",err)
+          console.log(pageName,"get publishCollect失败:",err)
         },
         complete(){
             wx.hideLoading()

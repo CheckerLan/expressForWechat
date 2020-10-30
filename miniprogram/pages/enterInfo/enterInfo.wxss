@@ -1,5 +1,5 @@
 /* miniprogram/pages/enterInfo/enterInfo.wxss */
-@import '../collect/collect.wxss';
+@import '../../style/info.wxss';
 
 .title{
   text-align: center;

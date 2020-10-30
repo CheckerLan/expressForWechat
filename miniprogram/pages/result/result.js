@@ -1,20 +1,17 @@
 // miniprogram/pages/result/result.js
 const app=getApp()
 const db = wx.cloud.database()
+const pageName='result.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    condition:1,
     expCode:'',
     expNo:'',
     ShipperName:'',
-    condition:1,
-    //订单编号	
-    OrderCode:'',
-    //快递公司编码
-    ShipperCode:'',
     //物流运单号
     LogisticCode:'',
     //物流状态
@@ -33,11 +30,8 @@ Page({
       expCode: options.expCode,
       expNo: options.expNo,
       ShipperName:options.ShipperName
-     
-
     })
-    console.log(this.data.expCode)
-    console.log(this.data.expNo)
+    console.log(pageName,'当前订单:',this.data.expCode,this.data.expNo)
     //请求云函数
     wx.showLoading({
       title: '查询中',
@@ -51,13 +45,12 @@ Page({
             expNo: this.data.expNo
         },
         success:(res) => {
-            // console.log("成功:",res)
             this.setData({
               condition:1,
               //订单编号	
-              OrderCode:res.result.OrderCode,
+              expNo:res.result.OrderCode,
               //快递公司编码
-              ShipperCode:res.result.ShipperCode,
+              expCode:res.result.ShipperCode,
               //物流运单号
               LogisticCode:res.result.LogisticCode,
               //物流状态
@@ -72,45 +65,45 @@ Page({
               //轨迹信息
               Traces:res.result.Traces.reverse()
             })
+
             db.collection('srecord')
             .where({
-              uid: app.openid, // 填入当前用户 openid
+              _openid: app.openid, // 填入当前用户 openid
               expNo: this.data.expNo
             })
-            .get()
-            .then(res => {
-              console.log(res.data)
-              if(res.data.length<=0){
-                console.log("数据库为空")
-                db.collection('srecord').add({
-                  // data 字段表示需新增的 JSON 数据
-                  data: {
-                    uid: app.openid, // 填入当前用户 openid
-                    expNo: this.data.expNo,
-                    expCode:this.data.expCode,
-                    expName:this.data.ShipperName
-                  }
-                })
-                .then(res => {
-                  console.log("addsuccess",res)
-                })
-                .catch(console.error)
-                //end of add
-
-              }else{
-                console.log("记录已存在")
-              }//end if
+            .get({
+              success:(res) => {
+                console.log(pageName,'get form srecord成功',res.data)
+                if(res.data.length<=0){
+                  console.log(pageName,"数据库为空")
+                  db.collection('srecord').add({
+                    // data 字段表示需新增的 JSON 数据
+                    data: {
+                      _openid: app.openid, // 填入当前用户 openid
+                      expNo: this.data.expNo,
+                      expCode:this.data.expCode,
+                      expName:this.data.ShipperName
+                    },
+                    success:(res)=>{
+                      console.log(pageName,"add成功",res)
+                    }
+                  })
+                  //end of add
+  
+                }else{
+                  console.log(pageName,"记录已存在")
+                }//end if
+              }
+              //end of success in get
             })
-            .catch(err => {
-              console.error(err)
-            })//end of get
+            //end of get
 
         },
         fail:(err) => {
             this.setData({
               condition:-1
             })
-            console.log("失败:",err)
+            console.log(pageName,"get失败:",err)
         },
         complete(){
           wx.hideLoading()
@@ -123,7 +116,7 @@ Page({
       success (res) {
         wx.getClipboardData({
           success (res) {
-            console.log(res.data) // data
+            console.log(pageName,'复制数据:',res.data) // data
           }
         })
       }

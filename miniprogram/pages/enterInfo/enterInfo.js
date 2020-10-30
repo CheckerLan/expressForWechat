@@ -1,6 +1,7 @@
 // miniprogram/pages/enterInfo/enterInfo.js
 const app=getApp()
 const db = wx.cloud.database()
+const pageName='enterInfo.js'
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
 
   back(){
     let that = this
-    console.log("back:",that.data)
+    console.log(pageName,"back:",that.data)
     const eventChannel = this.getOpenerEventChannel()
     db.collection('userinfo')
     .where({
@@ -57,17 +58,9 @@ Page({
               ui_idCode:that.data.ui_idCode
             },
             success: (res)=>{
-              wx.navigateBack({
-                success:()=>{
-                  eventChannel.emit('tkInfo', {
-                    ui_idName:that.data.ui_idName,
-                    ui_idCode:that.data.ui_idCode,
-                    c_tkPhone:that.data.c_tkPhone
-                  });
-                }
-              })
+              wx.navigateBack()
               //end of navigateBack
-              console.log('update')
+              console.log(pageName,'update成功',res)
             }, 
             fail: (err)=> {
     
@@ -80,15 +73,10 @@ Page({
       //end of success in get()
     })
     //end of get()
-    
-    
-
-
-
   },
   cancel(){
-    //wx.navigateBack()
-    console.log("tap:",this.data)
+    wx.navigateBack()
+ 
   },
   /**
    * 生命周期函数--监听页面加载
@@ -98,17 +86,18 @@ Page({
     .where({
       _id:app.globalData.openid
     })
-    .get()
-    .then(res=>{
-      console.log(res)
-      if(res.data.length>0){
+    .get({
+      success:(res)=>{
+        console.log(pageName,'get userInfo成功',res)
+        if(res.data.length>0){
         this.setData({
           ui_idName:res.data[0].ui_idName,
           ui_idCode:res.data[0].ui_idCode
         })
       }
-
+      }
     })
+
   },
 
   /**
@@ -136,6 +125,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.emit('tkInfo', {
+      ui_idName:this.data.ui_idName,
+      ui_idCode:this.data.ui_idCode,
+      c_tkPhone:this.data.c_tkPhone
+    });
 
   },
 

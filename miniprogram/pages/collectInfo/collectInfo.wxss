@@ -1,15 +1,7 @@
 /* pages/collectInfo/collectInfo.wxss */
-@import "../collect/collect.wxss";
+@import '../../style/info.wxss';
 
 .inputview{
   margin-top: 80rpx;
   margin-bottom: 80rpx;
-}
-.takeit{
-  color: white;
-  background-color: #5361df;
-  height: 120rpx;
-  line-height: 120rpx;
-  width: 660rpx;
-  padding: 0;
 }

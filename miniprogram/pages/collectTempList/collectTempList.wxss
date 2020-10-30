@@ -1,2 +1,12 @@
 /* miniprogram/pages/collectTempList/collectTempList.wxss */
-@import "../collectList/collectList.wxss";
+@import '../../style/list.wxss';
+
+.takenlist_ok{
+  border-radius: 20rpx;
+  background-color: green;
+  color: white;
+  box-shadow: gainsboro;
+  margin: 20rpx;
+  padding: 0rpx;
+  font-weight: bold;
+}

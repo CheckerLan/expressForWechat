@@ -25,9 +25,7 @@
         <view>取件点:{{item.c_pupoint}}</view>
         <view>目的地:{{item.c_address}}</view>
       </view>
-      <!-- <view>
-        <text class="integral">{{item.cIntegral}}</text>积分
-      </view> -->
+      <view class="color color_{{item.c_state}}"></view>
     </view>
     
   </view>

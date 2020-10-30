@@ -1,0 +1,57 @@
+.takenlist{
+  border-radius: 20rpx;
+  background-color: #5361df;
+  background-color: white;
+  color: white;
+  color: black;
+  box-shadow: gainsboro;
+  margin: 20rpx;
+  padding: 0rpx;
+  font-weight: bold;
+}
+
+.state{
+  /* background-color: green; */
+  margin: 40rpx 40rpx;
+  margin-bottom: 0;
+  border-radius: 50%;
+  height:50rpx;
+  width: 50rpx;
+}
+.weui-flex__item{
+  
+  margin: 25rpx;
+  margin-left: 0rpx;
+}
+.ftext{
+  font-size:20rpx;
+  top: 60rpx;
+  position: relative;
+  text-align: center;
+  /* writing-mode: vertical-rl; */
+}
+
+.color{
+  
+  width: 20rpx;
+	position: absolute;
+	top: 0;
+	right: 0;
+  bottom: 0;
+  border-radius: 0rpx 20rpx 20rpx 0rpx;
+}
+.color_1{
+  background-color: #5361df;
+}
+.color_2{
+  background-color: lightseagreen;
+}
+.color_3{
+  background-color: green;
+}
+.color_4{
+  background-color: green;
+}
+.weui-flex{
+  position:relative;
+}

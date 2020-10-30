@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container" >
   <view class="head">
-    <input class="inputval" type="text" model:value="{{inputVal}}"  placeholder="输入快递单号" >
+    <input class="inputval" type="text" confirm-type="search" model:value="{{inputVal}}"  placeholder="输入快递单号" >
       <mp-icon class="icon-search" icon="search" color="black" size="20"></mp-icon>
       <mp-icon class="icon-clean"  icon="close" color="black" size="20" bindtap="inputClean"></mp-icon>
     </input>

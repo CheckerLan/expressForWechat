@@ -1,6 +1,7 @@
 // miniprogram/pages/collectlist/collectlist.js
 const app=getApp()
 const db = wx.cloud.database()
+const pageName='collectList.js'
 Page({
 
   /**
@@ -29,7 +30,7 @@ Page({
     wx.cloud.callFunction({
       name: 'getCurrentCollect',
       success:(res) => {
-        console.log("成功:",res)
+        console.log(pageName,"get currentCollect成功:",res)
         if(res.result.data.length>0){
           let str=JSON.stringify(res.result.data.reverse()[0])
           wx.navigateTo({
@@ -39,12 +40,13 @@ Page({
         }
       },
       fail:(err) => {
-        console.log("失败:",err)
+        console.log(pageName,"get currentCollect失败:",err)
       },
       complete(){
           wx.hideLoading()
       }
-    })//end of callFunction 
+    })
+    //end of callFunction-getCurrentCollect
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -63,13 +65,13 @@ Page({
       currentCollect:''
     })
     wx.showLoading({
-      title: '加载当前接受的订单中',
+      title: '加载当前订单中',
       mask:true
     })
     wx.cloud.callFunction({
       name: 'getCurrentCollect',
       success:(res) => {
-        console.log("成功:",res)
+        console.log(pageName,"get CurrentCollect 成功:",res)
         if(res.result.data.length>0){
           this.setData({
             currentCollect:res.result.data.reverse()[0]
@@ -77,10 +79,9 @@ Page({
         }
       },
       fail:(err) => {
-        console.log("失败:",err)
+        console.log(pageName,"get CurrentCollect失败:",err)
       },
       complete(){
-
           wx.showLoading({
             title: '加载代拿列表中',
             mask:true
@@ -89,17 +90,18 @@ Page({
             c_state:1,
             c_is_deleted:false
           })
-          .get()
-          .then(res => {
-              console.log("getsuccess",res.data)
+          .get({
+            success:(res)=>{
+              console.log(pageName,"get collect成功",res.data)
               that.setData({
                 collectList:res.data.reverse()
               })
               wx.hideLoading()
+            }
           })
-          .catch(console.error)
-          
+          //end of get in collect
       }
+      //end of callFunction-getCurrentCollect
     })
 
     
