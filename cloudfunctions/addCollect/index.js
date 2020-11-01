@@ -27,12 +27,15 @@ exports.main = async (event, context) => {
         c_pupoint:event.c_pupoint,
         c_wight:event.c_wight,
         c_address:event.c_address,
-        c_phonenubmer:event.c_phonenubmer,
+       
         c_info:event.c_info,
         c_code:event.c_code,
 
         c_puUiid: wxContext.OPENID,
+        c_puPhone:event.c_puPhone,
         c_tkUiid:'',
+        c_tkPhone:'',
+
         
         c_gmt_create:datetime,
         c_gmt_modified:datetime,
@@ -40,26 +43,13 @@ exports.main = async (event, context) => {
         c_is_deleted:false
 
       }, success: res => {
-        //wx.showToast({
-         // title: '订单发起成功',
-        //})
         return res
       }, fail: err => {
-        //wx.showToast({
-          //icon: 'none',
-          //title: '订单发起失败',
-        //})
+        return err
       }
     })
   } catch (e) {
     console.log(e)
   }
 
-
-  // return {
-  //   event,
-  //   openid: wxContext.OPENID,
-  //   appid: wxContext.APPID,
-  //   unionid: wxContext.UNIONID,
-  // }
 }

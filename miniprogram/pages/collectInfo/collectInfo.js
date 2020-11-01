@@ -9,7 +9,9 @@ Page({
    */
   data: {
     collectList:'',
-    belong:false
+    belong:false,
+    toptip:'',
+    toptiptype:''
   },
 
   /**
@@ -102,10 +104,14 @@ Page({
                     }
                   })//end of callFunction 
                 }else{
-                  wx.showToast({
-                    title: '信息不全,无法接单',
-                    icon: 'loading',
-                    duration: 1000
+                  // wx.showToast({
+                  //   title: '信息不全,无法接单',
+                  //   icon: 'loading',
+                  //   duration: 1000
+                  // })
+                  that.setData({
+                    toptip:'信息不全,无法接单',
+                    toptiptype:'error'
                   })
                   wx.hideLoading()
                 }
@@ -138,7 +144,7 @@ Page({
       _id:this.data.collectList._id
     })
     .get({
-       success:()=>{
+       success:(res)=>{
         console.log(pageName,'get Collect成功',res)
       
         if(res.data.length==1 

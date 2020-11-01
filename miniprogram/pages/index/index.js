@@ -60,7 +60,7 @@ Page({
 
         db.collection('srecord')
         .where({
-            uid: app.openid, // 填入当前用户 openid
+            _openid: app.openid, // 填入当前用户 openid
         })
         .get({
             success:(res)=>{

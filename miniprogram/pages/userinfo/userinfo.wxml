@@ -1,7 +1,7 @@
 <!--miniprogram/pages/userinfo/userinfo.wxml-->
 <view class="container">
 
-
+  <mp-toptips msg="{{toptip}}" type="{{toptiptype}}" show="{{toptip}}" delay='1000'></mp-toptips>
   <view class="infoview weui-flex" >
     <view class="avaImg">
       <open-data type="userAvatarUrl"></open-data>

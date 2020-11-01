@@ -1,4 +1,5 @@
 <!--pages/collectInfo/collectInfo.wxml-->
+  <mp-toptips msg="{{toptip}}" type="{{toptiptype}}" show="{{toptip}}" delay='1000'></mp-toptips>
   <view class="inputview">
     <view class="weui-flex">
       <text class="margin">取件点:</text>

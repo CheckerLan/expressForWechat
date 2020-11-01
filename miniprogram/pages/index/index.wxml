@@ -1,13 +1,14 @@
 <!--index.wxml-->
 <view class="container" >
   <view class="head">
-    <input class="inputval" type="text" confirm-type="search" model:value="{{inputVal}}"  placeholder="输入快递单号" >
+    <input class="inputval" type="text" confirm-type="search" model:value="{{inputVal}}"  placeholder="输入快递单号" bindconfirm="isearch" >
       <mp-icon class="icon-search" icon="search" color="black" size="20"></mp-icon>
       <mp-icon class="icon-clean"  icon="close" color="black" size="20" bindtap="inputClean"></mp-icon>
     </input>
     
     <a class="search" bindtap="isearch">搜索</a>
   </view>
+  
   <view class="center" wx:if="{{history.length<=0}}">
     暂无记录...
   </view>

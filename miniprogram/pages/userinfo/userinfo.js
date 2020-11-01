@@ -8,6 +8,8 @@ Page({
    */
   data: {
     integral:"-1",
+    toptip:'',
+    toptiptype:''
   },
 
   /**
@@ -40,10 +42,14 @@ Page({
             +'?collectList='+str
           })
         }else{
-          wx.showToast({
-            title: '当前暂无订单',
-            icon: 'loading',
-            duration: 1000
+          // wx.showToast({
+          //   title: '当前暂无订单',
+          //   icon: 'loading',
+          //   duration: 1000
+          // })
+          this.setData({
+            toptip:'当前暂无订单',
+            toptiptype:'error'
           })
         }
       },

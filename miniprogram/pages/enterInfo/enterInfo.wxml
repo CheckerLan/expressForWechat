@@ -13,7 +13,7 @@
     <view class="weui-flex">
         <text class="margin">身份证号:</text>
         <view class="weui-flex__item">
-          <input placeholder-class="f-001" placeholder="输入您的身份证号码" maxlength='25' model:value='{{ui_idCode}}'></input>
+          <input placeholder-class="f-001" placeholder="输入您的身份证号码" type="idcard"  maxlength='25' model:value='{{ui_idCode}}'></input>
         </view>
     </view>
 
@@ -26,7 +26,7 @@
     <view class="weui-flex">
         <text class="margin">联系方式:</text>
         <view class="weui-flex__item">
-          <input placeholder-class="f-001" placeholder="输入您的手机号码方便对方联系您" maxlength='25' model:value='{{c_tkPhone}}'></input>
+          <input placeholder-class="f-001" type="number" placeholder="输入您的手机号码方便对方联系您" maxlength='25' model:value='{{c_tkPhone}}'></input>
         </view>
     </view>
   </view>

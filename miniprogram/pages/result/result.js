@@ -45,14 +45,15 @@ Page({
             expNo: this.data.expNo
         },
         success:(res) => {
+          console.log(pageName,'TrackQuery 成功',res)
             this.setData({
               condition:1,
               //订单编号	
-              expNo:res.result.OrderCode,
+              expNo:res.result.LogisticCode,
               //快递公司编码
               expCode:res.result.ShipperCode,
               //物流运单号
-              LogisticCode:res.result.LogisticCode,
+              // LogisticCode:res.result.LogisticCode,
               //物流状态
               /**
                 0-暂无轨迹信息
@@ -65,10 +66,10 @@ Page({
               //轨迹信息
               Traces:res.result.Traces.reverse()
             })
-
+            console.log(app.globalData.openid,this.data.expNo)
             db.collection('srecord')
             .where({
-              _openid: app.openid, // 填入当前用户 openid
+              _openid: app.globalData.openid, // 填入当前用户 openid
               expNo: this.data.expNo
             })
             .get({
@@ -112,7 +113,7 @@ Page({
   },
   copyCode(){
     wx.setClipboardData({
-      data: this.data.LogisticCode,
+      data: this.data.expNo,
       success (res) {
         wx.getClipboardData({
           success (res) {

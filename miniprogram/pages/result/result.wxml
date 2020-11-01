@@ -2,7 +2,7 @@
 <view wx:if="{{condition==1}}">
   <view class="infoHead">
     <view> 
-      <text class="logCode">单号: {{LogisticCode}}</text>
+      <text class="logCode">单号: {{expNo}}</text>
       <mp-icon icon="copy" color="black" size="15" bindtap="copyCode"></mp-icon>
     </view>
     <text>快递公司: {{ShipperName}}</text>
