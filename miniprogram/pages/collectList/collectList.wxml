@@ -9,8 +9,8 @@
     </view>
     <view class="weui-flex">
       <view class="weui-flex__item">
-        <view>取件点:{{currentCollect.c_address}}</view>
-        <view>目的地:{{currentCollect.c_pupoint}}</view>
+        <view>取件点:{{currentCollect.c_pupoint}}</view>
+        <view>目的地:{{currentCollect.c_address}}</view>
       </view>
     </view>
     

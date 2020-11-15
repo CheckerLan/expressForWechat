@@ -73,6 +73,7 @@ Page({
                       _id:that.data.collectList._id,
                       c_state:2,
                       c_version:that.data.collectList.c_version,
+                      c_tkUiid:app.globalData.openid,
                       c_tkPhone:data.c_tkPhone,
                     },
                     success:(res) => {

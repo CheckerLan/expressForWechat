@@ -19,7 +19,7 @@ exports.main = async (event, context) => {
       data: {
         // 表示将 done 字段置为 true
         c_state: event.c_state,
-        c_tkUiid:wxContext.OPENID,
+        c_tkUiid:event.c_tkUiid,
         c_tkPhone:event.c_tkPhone,
 
         c_gmt_modified:datetime,
